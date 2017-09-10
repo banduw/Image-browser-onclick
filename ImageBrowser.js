@@ -1,10 +1,7 @@
-function setupSlider(container){
+function ImageBrowser(container){
     function goLeft(ev) {
-        var container = ev.currentTarget.parentNode;
-        var current = Number(container.getAttribute("current"));
         current--;
-        container.setAttribute("current", current);
-        container.querySelector(".image-list").style.left = (current * (-220)) + "px";
+        imageList.style.left = (current * (-220)) + "px";
         container.classList.remove("last");
         if (current === 0){
             container.classList.add("first");
@@ -12,15 +9,16 @@ function setupSlider(container){
     }
     function goRight(ev) {
         var container = ev.currentTarget.parentNode;
-        var current = Number(container.getAttribute("current"));
-        var count = Number(container.getAttribute("count"));
         current++;
-        container.setAttribute("current", current);
-        container.querySelector(".image-list").style.left = (current * (-220)) + "px";
+        imageList.style.left = (current * (-220)) + "px";
         container.classList.remove("first");
         if (current === (count - 1)){
             container.classList.add("last");
         }
+    }
+    function clear(){
+        next.removeEventLitener("click", goRight);
+        prev.removeEventLitener("click", goLeft);
     }
 
     // add next button
@@ -37,9 +35,10 @@ function setupSlider(container){
     prev.addEventListener("click", goLeft);
     container.appendChild(prev);
 
-    var images = container.querySelectorAll(".image-list img");
-    container.setAttribute("count", images.length);
-    container.setAttribute("current", 0);
+    var imageList = container.querySelector(".image-list");
+    var images = imageList.querySelectorAll("img");
+    var count = images.length;
+    var current = 0;
     container.classList.add("first");
     if (images.length <= 1) {
         container.classList.add("last");

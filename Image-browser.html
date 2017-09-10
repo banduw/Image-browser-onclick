@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="image-browser.css">
+        <link rel="stylesheet" type="text/css" href="ImageBrowser.css">
         <style>
         </style>
     </head>
 
     <body>
-        <div>
-            <div class = "image-container">
-                <div class = "image-list">
-                    <img src = "cat-1.jpg">
-                    <img src = "cat-2.jpg">
-                    <img src = "cat-3.jpg">
-                </div>
+        <div class = "image-container">
+            <div class = "image-list">
+                <img src = "cat-1.jpg">
+                <img src = "cat-2.jpg">
+                <img src = "cat-3.jpg">
             </div>
-            <div class = "image-container" style = "left:50px">
-                <div class = "image-list">
-                    <img src = "dog-1.jpg">
-                    <img src = "dog-2.jpg">
-                </div>
+        </div>
+        <div class = "image-container" style = "left:50px">
+            <div class = "image-list">
+                <img src = "dog-1.jpg">
+                <img src = "dog-2.jpg">
             </div>
-            <div class = "image-container" style = "left:100px">
-                <div class = "image-list">
-                    <img src = "butterfly-1.jpg">
-                </div>
+        </div>
+        <div class = "image-container" style = "left:100px">
+            <div class = "image-list">
+                <img src = "butterfly-1.jpg">
             </div>
         </div>
 
-        <script src = "setupSlider.js"></script>
+        <script src = "ImageBrowser.js"></script>
         <script type="text/javascript">
             // main body
 
             var containers = document.querySelectorAll(".image-container");
             for (var i = 0; i < containers.length; i++){
-                setupSlider(containers[i]); 
+                new ImageBrowser(containers[i]); 
             }
         </script>
     </body>
